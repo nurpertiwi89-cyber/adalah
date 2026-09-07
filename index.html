@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special for Cutey Program ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-bg: #fdeef3;
+    --pink-dot: #f7c9da;
+    --pink-primary: #e0568c;
+    --pink-primary-dark: #c94279;
+    --pink-deep: #a83466;
+    --card-white: #fffbfd;
+    --text-soft: #8a4763;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-soft);
+    background-color: var(--pink-bg);
+    background-image: radial-gradient(var(--pink-dot) 1.6px, transparent 1.6px);
+    background-size: 22px 22px;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .heading-font{ font-family: 'Baloo 2', cursive; }
+
+  .screen{
+    display:none;
+    min-height:100vh;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    padding: 60px 20px 80px;
+    animation: fadeIn .5s ease;
+  }
+  .screen.active{ display:flex; }
+
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+  .mascot{
+    width:120px; height:120px; border-radius:50%;
+    background: var(--pink-primary);
+    display:flex; align-items:center; justify-content:center;
+    font-size:56px;
+    box-shadow: 0 10px 0 rgba(200,90,140,0.15);
+    margin-bottom: 24px;
+  }
+  .landing-title{
+    color: var(--pink-primary-dark);
+    font-size: clamp(28px, 5vw, 40px);
+    margin: 0 0 18px;
+    text-align:center;
+    white-space: pre-line;
+  }
+  .landing-sub{
+    max-width: 480px;
+    text-align:center;
+    line-height:1.6;
+    font-size:16px;
+    margin-bottom: 34px;
+  }
+  .btn{
+    border:none; cursor:pointer;
+    font-family:'Baloo 2', cursive;
+    font-size:18px;
+    color:#fff;
+    background: var(--pink-primary);
+    padding: 16px 40px;
+    border-radius: 999px;
+    box-shadow: 0 6px 0 var(--pink-primary-dark);
+    transition: transform .12s ease;
+  }
+  .btn:active{ transform: translateY(4px); box-shadow: 0 2px 0 var(--pink-primary-dark); }
+  .btn-secondary{
+    background: var(--card-white);
+    color: var(--pink-primary-dark);
+    box-shadow: 0 6px 0 #e9c3d3;
+    border: 2px solid var(--pink-primary);
+  }
+
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .loading-title{ color: var(--pink-primary-dark); margin: 20px 0 6px; font-size:22px; text-align:center;}
+  .loading-sub{ font-size:14px; text-align:center; }
+  .spinner{
+    width:56px;height:56px;border-radius:50%;
+    border:6px solid #f6d3e2; border-top-color: var(--pink-primary);
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin{ to{ transform: rotate(360deg);} }
+
+  .card{
+    background: var(--card-white);
+    border: 2px solid #f4bcd4;
+    border-radius: 20px;
+    padding: 22px 24px;
+    max-width: 460px;
+    width:100%;
+    box-shadow: 0 6px 0 #f2c7da;
+    margin-bottom: 18px;
+  }
+  .notif-card{ display:flex; gap:14px; align-items:flex-start; }
+  .notif-icon{
+    flex:0 0 auto; width:44px;height:44px;border-radius:50%;
+    background:#ffe3ee; display:flex;align-items:center;justify-content:center;font-size:20px;
+  }
+  .notif-title{ margin:0 0 4px; font-size:16px; color: var(--pink-primary-dark); }
+  .notif-text{ margin:0; font-size:14px; line-height:1.5; }
+
+  .music-card{ text-align:center; }
+  .music-avatar{
+    width:74px;height:74px;border-radius:50%; margin: 0 auto 10px;
+    background:#ffe3ee; display:flex;align-items:center;justify-content:center;font-size:32px;
+    border: 3px solid var(--pink-primary);
+  }
+  .music-title{ margin:0 0 4px; color: var(--pink-primary-dark); font-size:17px;}
+  .play-btn{
+    width:52px;height:52px;border-radius:50%; border:none; cursor:pointer;
+    background: var(--pink-primary); color:#fff; font-size:18px;
+  }
+
+  .main-heading{
+    color: var(--pink-primary-dark);
+    font-size: clamp(30px, 6vw, 46px);
+    margin: 22px 0 4px;
+    text-align:center;
+  }
+  .main-subheading{ margin-bottom: 26px; font-size:15px; }
+
+  .gift-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:16px;
+    max-width: 460px;
+    width:100%;
+  }
+  .gift-grid .gift-box.wide{ grid-column: 1 / -1; }
+
+  .gift-box{
+    background: var(--card-white);
+    border: 2px solid var(--pink-primary);
+    border-radius: 18px;
+    padding: 26px 12px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow: 0 6px 0 var(--pink-primary);
+    transition: transform .12s ease;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .gift-box.wide{ flex-direction:row; justify-content:center; padding:18px; }
+  .gift-box:hover{ transform: translateY(-3px); }
+  .gift-box:active{ transform: translateY(3px); box-shadow: 0 2px 0 var(--pink-primary); }
+  .gift-emoji{ font-size:30px; }
+  .gift-label{ font-family:'Baloo 2',cursive; color: var(--pink-primary-dark); font-size:15px; }
+
+  .sub-heading{
+    color: var(--pink-primary-dark);
+    font-size: clamp(24px, 5vw, 34px);
+    text-align:center;
+    margin: 0 0 8px;
+  }
+  .sub-instructions{ text-align:center; max-width: 420px; margin-bottom: 30px; font-size:14px; }
+  .back-btn{ margin-top: 34px; }
+
+  /* POLAROID GRID DENGAN PENGATURAN KETAJAMAN GAMBAR DAN PROPORSI ASLI */
+  .polaroid-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 22px;
+    max-width: 780px;
+    width:100%;
+    align-items: start;
+  }
+  .polaroid{
+    background:#fff;
+    padding: 10px 10px 32px;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(168,52,102,0.18);
+    transform: rotate(var(--r, -2deg));
+    position:relative;
+  }
+  .polaroid:nth-child(odd){ --r: -3deg; }
+  .polaroid:nth-child(even){ --r: 2deg; }
+  .polaroid img{ 
+    width:100%; 
+    height:auto; 
+    display:block; 
+    border-radius:2px; 
+    object-fit:contain; 
+    background:#f4d3e0;
+    /* PENAMBAHAN KETAJAMAN GAMBAR */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  .polaroid-caption{
+    position:absolute; bottom:8px; left:6px; right:6px; text-align:center;
+    font-family:'Baloo 2',cursive; font-size:12.5px; color: var(--pink-deep);
+    line-height: 1.2;
+  }
+
+  .jar{
+    width: 230px;
+    background: var(--card-white);
+    border: 3px solid var(--pink-primary);
+    border-radius: 0 0 40px 40px;
+    padding: 26px 16px 26px;
+    position:relative;
+    margin-top: 30px;
+  }
+  .jar::before{
+    content:"";
+    position:absolute; top:-18px; left:50%; transform:translateX(-50%);
+    width:120px; height:20px; background: var(--pink-primary-dark);
+    border-radius: 6px 6px 0 0;
+  }
+  .jar-label{
+    border: 2px dashed var(--pink-primary);
+    border-radius: 10px;
+    text-align:center;
+    font-family:'Baloo 2',cursive;
+    color: var(--pink-primary-dark);
+    padding: 6px;
+    margin-bottom: 14px;
+    font-size:13px; letter-spacing:1px;
+  }
+  .heart-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;
+  }
+  .heart-btn{
+    background:none; border:none; cursor:pointer; font-size:26px;
+    filter: drop-shadow(0 2px 0 rgba(0,0,0,0.05));
+  }
+  .heart-btn.opened{ filter: grayscale(1); opacity:.55; cursor:default; }
+
+  .modal-overlay{
+    position:fixed; inset:0; background: rgba(60,20,40,0.35);
+    display:none; align-items:center; justify-content:center; padding:20px; z-index:50;
+  }
+  .modal-overlay.active{ display:flex; }
+  .modal-box{
+    background: var(--card-white);
+    border: 3px solid var(--pink-primary);
+    border-radius: 18px;
+    max-width: 360px; width:100%;
+    padding: 24px 26px 28px;
+    position:relative;
+    text-align:left;
+  }
+  .modal-close{
+    position:absolute; top:10px; right:14px; border:none; background:none;
+    font-size:20px; cursor:pointer; color: var(--pink-primary-dark);
+  }
+  .modal-title{ margin:0 0 10px; color: var(--pink-primary-dark); font-family:'Baloo 2',cursive; }
+  .modal-text{ margin:0; line-height:1.55; font-size:15px; }
+
+  .letter-paper{
+    max-width: 560px; width:100%;
+    background: repeating-linear-gradient(var(--card-white), var(--card-white) 31px, #f5d6e4 32px);
+    border: 2px solid #f4bcd4;
+    border-radius: 10px;
+    padding: 30px 28px;
+    box-shadow: 0 8px 0 #f2c7da;
+    font-size: 15.5px;
+    line-height: 32px;
+    white-space: pre-wrap;
+  }
+
+  @media (max-width: 480px){
+    .gift-grid{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LAYAR 1: LANDING PAGE -->
+<section id="screen-landing" class="screen active">
+  <div class="mascot">🐱</div>
+  <h1 class="landing-title" id="landing-title-text"></h1>
+  <p class="landing-sub" id="landing-sub-text"></p>
+  <button class="btn" onclick="goTo('screen-ask')">Bukaa »</button>
+</section>
+
+<!-- LAYAR TANYA (sebelum loading) -->
+<section id="screen-ask" class="screen">
+  <div class="mascot">😸</div>
+  <h1 class="landing-title" id="ask-title-text"></h1>
+  <p class="landing-sub" id="ask-sub-text"></p>
+  <div class="btn-group">
+    <button class="btn" id="btn-yes-text" onclick="goTo('screen-loading'); startLoading();"></button>
+    <button class="btn btn-secondary" id="btn-no-text" onclick="goTo('screen-reject')"></button>
+  </div>
+</section>
+
+<!-- LAYAR REJECT (kalau pencet gamau) -->
+<section id="screen-reject" class="screen">
+  <div class="mascot">😿</div>
+  <h1 class="landing-title" id="reject-title-text"></h1>
+  <p class="landing-sub" id="reject-sub-text"></p>
+  <button class="btn" id="btn-back-text" onclick="goTo('screen-ask')"></button>
+</section>
+
+<!-- LAYAR 2: LOADING -->
+<section id="screen-loading" class="screen">
+  <div class="mascot">🐈</div>
+  <div class="spinner" style="margin-top:6px;"></div>
+  <h3 class="loading-title" id="loading-title-text"></h3>
+  <p class="loading-sub" id="loading-sub-text"></p>
+</section>
+
+<!-- LAYAR 3: HALAMAN UTAMA -->
+<section id="screen-main" class="screen">
+  <div class="card notif-card">
+    <div class="notif-icon">💌</div>
+    <div>
+      <p class="notif-title" id="notif-title-text"></p>
+      <p class="notif-text" id="notif-text-text"></p>
+    </div>
+  </div>
+
+  <div class="card music-card">
+    <div class="music-avatar">🎵</div>
+    <p class="music-title" id="music-title-text"></p>
+    <!-- KETERANGAN BEST PART LAGU -->
+    <p id="music-best-text" style="font-size:13px; color:#e0568c; font-weight:600; margin:-2px 0 12px;"></p>
+    
+    <button class="play-btn" id="play-btn" onclick="toggleMusic()">▶</button>
+    <audio id="bg-audio" loop></audio>
+  </div>
+
+  <h1 class="main-heading" id="main-heading-text"></h1>
+  <p class="main-subheading" id="main-sub-text"></p>
+
+  <div class="gift-grid">
+    <div class="gift-box" onclick="goTo('screen-gallery')">
+      <span class="gift-emoji">📸</span>
+      <span class="gift-label">Photo Gallery</span>
+    </div>
+    <div class="gift-box" onclick="goTo('screen-jar')">
+      <span class="gift-emoji">🫙</span>
+      <span class="gift-label">Jar of Appreciation</span>
+    </div>
+    <div class="gift-box wide" onclick="goTo('screen-letter')">
+      <span class="gift-emoji">💗</span>
+      <span class="gift-label" id="letter-box-label"></span>
+    </div>
+  </div>
+</section>
+
+<!-- LAYAR 4: PHOTO GALLERY -->
+<section id="screen-gallery" class="screen">
+  <h2 class="sub-heading">Photo Gallery</h2>
+  <p class="sub-instructions">Adanya cuma enih...Maaf kalo ga lengkap yh... ✨</p>
+  <div class="polaroid-grid" id="gallery-grid"></div>
+  <button class="btn btn-secondary back-btn" onclick="goTo('screen-main')">← Kembali</button>
+</section>
+
+<!-- LAYAR 5: JAR OF APPRECIATION -->
+<section id="screen-jar" class="screen">
+  <h2 class="sub-heading">Jar of Appreciation</h2>
+  <p class="sub-instructions">Klik tiap hati untuk buka satu pesan ✨</p>
+  <div class="jar">
+    <div class="jar-label">Undian tidak berhadiah</div>
+    <div class="heart-grid" id="heart-grid"></div>
+  </div>
+  <button class="btn btn-secondary back-btn" onclick="goTo('screen-main')">← Kembali</button>
+</section>
+
+<div class="modal-overlay" id="wish-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 class="modal-title" id="modal-title-text"></h3>
+    <p class="modal-text" id="modal-text-text"></p>
+  </div>
+</div>
+
+<!-- LAYAR 6: SPECIAL LETTER -->
+<section id="screen-letter" class="screen">
+  <h2 class="sub-heading" id="letter-heading-text"></h2>
+  <div class="letter-paper" id="letter-body-text"></div>
+  <button class="btn btn-secondary back-btn" onclick="goTo('screen-main')">← Kembali</button>
+</section>
+
+
+<script>
+const CONFIG = {
+
+  // ---------- Layar 1: Landing ----------
+  landingTitle: "Aloo, My Precious AECTION 8.0,\nEspecially my Cutey Program!",
+  landingSub: "I just wanna say that you guys are truly amazing and I'm so proud to be part of this journey with you all",
+
+  // ---------- Layar Tanya (Sebelum Loading) ----------
+  askTitle: "ar u redi tu open?",
+  askSub: "yes or yes si...maksa enih, tapi gamau yaudah",
+  btnYesText: "Maybe Yeah",
+  btnNoText: "gamau..",
+
+  // ---------- Layar Jika Pilih "gamau.." ----------
+  rejectTitle: "Eyyy, no no yah",
+  rejectSub: "Semoga hari mu selalu senin",
+  btnBackText: "Back to Choose Yes",
+
+  // ---------- Layar 2: Loading ----------
+  loadingTitle: "Mashing the meow",
+  loadingSub: "Preparing something special, but not martabak! 💓",
+  loadingDurationMs: 2200,
+
+  // ---------- Layar 3: Halaman utama ----------
+  notifTitle: "Hi there! 💗",
+  notifText: "Thank you for all ur effort, time, and support during this jurney",
+
+  musicTitle: "Our Playlist - Best Part",
+  bestPart: "Best Part: 01:20 - 02:15 🎧",
+  audioSrc: "https://files.catbox.moe/5qsbfi.mp3",
+
+  mainHeading: "Guess What?",
+  mainSub: "Open atu atu yak:",
+  letterBoxLabel: "This is not martabak special",
+
+  // ---------- Layar 4: Adanya ini...maaf kalo kurang lengkap yh... ----------
+  photos: [
+    { src: "https://files.catbox.moe/wf2jqd.jpeg", caption: "us before ratek" },
+    { src: "https://files.catbox.moe/zv2d4g.png", caption: "gatau ini bahas apa..." },
+    { src: "https://files.catbox.moe/k8ifl2.jpeg", caption: "Gaya program for the first time" },
+    { src: "https://files.catbox.moe/oxm92i.jpeg", caption: "ini pas ragen bukan c" },
+    { src: "https://files.catbox.moe/zfnx7g.jpeg", caption: "finally" },
+    { src: "https://files.catbox.moe/hbfpwg.jpeg", caption: "mwehe" },
+    { src: "https://files.catbox.moe/09d7fj.jpeg", caption: "Intinya dekor deh, wlau ga semua..." },
+    { src: "https://files.catbox.moe/aw5myc.jpeg", caption: "Ini lucu juga" },
+  ],
+
+  // ---------- Layar 5: Jar of Appreciation ----------
+  "Undian tidak berhadiah": [
+    "Makasih buat effortnya di tengah kesibukan kalian",
+    "KALIAN KERENZ ABIEZZ",
+    "Makasi udah berjuang sejauh ini",
+    "Makasi udah mau nerima aku yang lucu di divisi yang keren ini",
+    "See ya on top",
+    "DONT PORGET TU EAT AND SLEEP YEAH",
+    "Yahh coba lagi",
+    "SO PROUD OF U GUYS.",
+    "SEMANGAT COOLYEAHNYA",
+  ],
+
+  // ---------- Layar 6: Surat ----------
+  letterHeading: "A Thank You Letter",
+  letterText: `Haii, Gorgeous
+
+Sebenernya hak bicaraku dicabut sama lina...tapi hari ini akan aku lawan!!
+GA YA BERCANDA
+just wanna say that every journey has a story behind it, dan dibalik cerita yang besar ini....ada cerita yang dibalik
+ENGGAK YAH MAKSUDNYA, behind this awesome story, there are amazing people who put their heart into their work (damn)
+
+Aku mau ngucapin terima kasih banyak buat usaha dan waktu yang telah kalian kasihh buat kelancara acara ini. Aku tau tiap orang punya kesibukannya masing -masing dan pasti CAPEK BANGET YAHH. But u all doing a great job (I am so proud tbh, zzzzzz)
+
+Aku seneng bisa jalanin ini bareng kalian ( tapi pasti kalian yg lebih seneng si bisa satu divisi sama aku :). But, I don't think I could've done this if it weren't for all of you <>
+
+Aku juga mau minta maaf kalo ada perkataan atau perilaku yang kurang berkenan di hati kalian. Maaf juga belum bisa bantu banyak bahkan mungkin sering ngerepotin, especially Lina, Dini, Talitha, dana, mahatyas, firly, lubna, agung, noya, sagara, BPH, logistik, Creative, BD, PR, CP, abang gojek, atau panitia lainnya, atau anu...adalah pokoknya. 
+
+Jujur ga bisa berword-word lagi....
+Inti dari pada inti, KALIAN KEREN BANGET GUYS DAH BISA SAMPE SEJAUH INI. TETEP SEMANGAT AND KEEP SMILE (makan sma tidur juga jgn opsional yh). 
+
+Just like the song I put here, you guys are truly the best part. Huhu thank yaa olll 
+
+With love,
+[nahana]`,
+};
+
+function goTo(screenId){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+function startLoading(){
+  setTimeout(() => goTo('screen-main'), CONFIG.loadingDurationMs);
+}
+
+function toggleMusic(){
+  const audio = document.getElementById('bg-audio');
+  const btn = document.getElementById('play-btn');
+  if(!CONFIG.audioSrc){
+    alert('Belum ada link musik. Isi CONFIG.audioSrc di dalam file HTML ya!');
+    return;
+  }
+  if(audio.paused){ audio.play(); btn.textContent = '❚❚'; }
+  else{ audio.pause(); btn.textContent = '▶'; }
+}
+
+function closeModal(){
+  document.getElementById('wish-modal').classList.remove('active');
+}
+
+function renderAll(){
+  document.getElementById('landing-title-text').textContent = CONFIG.landingTitle;
+  document.getElementById('landing-sub-text').textContent = CONFIG.landingSub;
+  
+  document.getElementById('ask-title-text').textContent = CONFIG.askTitle;
+  document.getElementById('ask-sub-text').textContent = CONFIG.askSub;
+  document.getElementById('btn-yes-text').textContent = CONFIG.btnYesText;
+  document.getElementById('btn-no-text').textContent = CONFIG.btnNoText;
+  
+  document.getElementById('reject-title-text').textContent = CONFIG.rejectTitle;
+  document.getElementById('reject-sub-text').textContent = CONFIG.rejectSub;
+  document.getElementById('btn-back-text').textContent = CONFIG.btnBackText;
+
+  document.getElementById('loading-title-text').textContent = CONFIG.loadingTitle;
+  document.getElementById('loading-sub-text').textContent = CONFIG.loadingSub;
+  document.getElementById('notif-title-text').textContent = CONFIG.notifTitle;
+  document.getElementById('notif-text-text').textContent = CONFIG.notifText;
+  
+  document.getElementById('music-title-text').textContent = CONFIG.musicTitle;
+  document.getElementById('music-best-text').textContent = CONFIG.bestPart;
+  
+  document.getElementById('main-heading-text').textContent = CONFIG.mainHeading;
+  document.getElementById('main-sub-text').textContent = CONFIG.mainSub;
+  document.getElementById('letter-box-label').textContent = CONFIG.letterBoxLabel;
+  document.getElementById('letter-heading-text').textContent = CONFIG.letterHeading;
+  document.getElementById('letter-body-text').textContent = CONFIG.letterText;
+
+  if(CONFIG.audioSrc){ document.getElementById('bg-audio').src = CONFIG.audioSrc; }
+
+  // Photo gallery
+  const galleryGrid = document.getElementById('gallery-grid');
+  galleryGrid.innerHTML = '';
+  CONFIG.photos.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'polaroid';
+    div.innerHTML = `<img src="${p.src}" alt="${p.caption}"><div class="polaroid-caption">${p.caption}</div>`;
+    galleryGrid.appendChild(div);
+  });
+
+  // Jar of appreciation
+  const heartGrid = document.getElementById('heart-grid');
+  heartGrid.innerHTML = '';
+  CONFIG["Undian tidak berhadiah"].forEach((msg, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'heart-btn';
+    btn.textContent = '💗';
+    btn.setAttribute('aria-label', 'Buka pesan ' + (i+1));
+    btn.onclick = () => {
+      btn.classList.add('opened');
+      btn.textContent = '🤍';
+      document.getElementById('modal-title-text').textContent = 'Wish #' + (i+1);
+      document.getElementById('modal-text-text').textContent = msg;
+      document.getElementById('wish-modal').classList.add('active');
+    };
+    heartGrid.appendChild(btn);
+  });
+}
+
+renderAll();
+</script>
+</body>
+</html>
